@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import ro.tsuku.androidarchdetector.NeonDetector;
+import ro.tsuku.androidarchdetector.ArchDetector;
 
 
 public class SampleActivity extends ActionBarActivity {
@@ -16,11 +16,8 @@ public class SampleActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sample);
 
-        if (NeonDetector.hasNeon()) {
-            Log.d("CPU", "I have neon!!");
-        } else {
-            Log.d("CPU", "I don't have neon!!");
-        }
+        ArchDetector.Arch arch = ArchDetector.detect();
+        Log.d("CPU", "My arch is: " + arch.getValue());
     }
 
     @Override
